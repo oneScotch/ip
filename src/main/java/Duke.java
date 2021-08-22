@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Duke {
+    private static Task[] tasks = new Task[100];
+    private static int numOfTasks = 0;
     public static String line = "____________________________________________________________";
 
     public static void greet() {
@@ -18,44 +20,52 @@ public class Duke {
         System.out.println("Bye. Hope to see you again soon!\n" + line);
     }
 
-    public static void level2() {
-        String[] list = new String[100];
+    public static void printList() {
+        System.out.println(line + "\nHere are the tasks in your list:");
+        for (int i = 0; i < numOfTasks; i++) {
+            System.out.println((i + 1) + ".[" + tasks[i].getStatusIcon() + "] " + tasks[i].getDescription());
+        }
+        System.out.println(line);
+    }
+
+    public static void doTask(int index) {
+        System.out.println(line);
+        if (index > numOfTasks) {
+            System.out.println("Invalid task index");
+        } else {
+            tasks[index - 1].markAsDone();
+            System.out.println("Nice! I've marked this task as done:\n[X] " + tasks[index - 1].getDescription());
+        }
+        System.out.println(line);
+    }
+
+    public static void level3() {
         Scanner sc = new Scanner(System.in);
-        int count = 0;
         while (true) {
             String input = sc.nextLine();
+            if (input.contains("done")) {
+                doTask(Integer.parseInt(input.substring(input.indexOf(" ") + 1)));
+                continue;
+            }
             switch (input) {
             case ("bye"):
                 exit();
                 return;
             case ("list"):
-                System.out.println(line);
-                for (int i = 0; i < count; i++) {
-                    System.out.println((i + 1) + ". " + list[i]);
-                }
-                System.out.println(line);
+                printList();
                 break;
             default:
-                list[count] = input;
-                count++;
-                System.out.println(line + "\nadded: " + input + "\n" + line);
+                tasks[numOfTasks] = new Task(input);
+                numOfTasks++;
+                System.out.println(line + "\ntask added: " + input + "\n" + line);
             }
 
         }
     }
 
-    public static void level1() {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        if (input.equals("bye")) {
-            exit();
-            return;
-        }
-        System.out.println(line + "\n" + input + "\n" + line);
-    }
-
     public static void main(String[] args) {
         greet();
-        level2();
+        level3();
     }
 }
+
