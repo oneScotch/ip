@@ -18,6 +18,32 @@ public class Duke {
         System.out.println("Bye. Hope to see you again soon!\n" + line);
     }
 
+    public static void level2() {
+        String[] list = new String[100];
+        Scanner sc = new Scanner(System.in);
+        int count = 0;
+        while (true) {
+            String input = sc.nextLine();
+            switch (input) {
+            case ("bye"):
+                exit();
+                return;
+            case ("list"):
+                System.out.println(line);
+                for (int i = 0; i < count; i++) {
+                    System.out.println((i + 1) + ". " + list[i]);
+                }
+                System.out.println(line);
+                break;
+            default:
+                list[count] = input;
+                count++;
+                System.out.println(line + "\nadded: " + input + "\n" + line);
+            }
+
+        }
+    }
+
     public static void level1() {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
@@ -30,6 +56,6 @@ public class Duke {
 
     public static void main(String[] args) {
         greet();
-        level1();
+        level2();
     }
 }
