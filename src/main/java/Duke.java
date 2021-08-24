@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class Duke {
     private static Task[] tasks = new Task[100];
     private static int numOfTasks = 0;
@@ -23,7 +24,7 @@ public class Duke {
     public static void printList() {
         System.out.println(line + "\nHere are the tasks in your list:");
         for (int i = 0; i < numOfTasks; i++) {
-            System.out.println((i + 1) + ".[" + tasks[i].getStatusIcon() + "] " + tasks[i].getDescription());
+            System.out.println((i + 1) + "." + tasks[i]);
         }
         System.out.println(line);
     }
@@ -39,7 +40,7 @@ public class Duke {
         System.out.println(line);
     }
 
-    public static void level3() {
+    public static void level4() {
         Scanner sc = new Scanner(System.in);
         while (true) {
             String input = sc.nextLine();
@@ -55,9 +56,27 @@ public class Duke {
                 printList();
                 break;
             default:
-                tasks[numOfTasks] = new Task(input);
+                if (input.contains("todo")) {
+                    String taskName = input.substring(input.indexOf("todo") + 5);
+                    tasks[numOfTasks] = new ToDo(taskName);
+                } else if (input.contains("deadline")) {
+                    String taskName = input.substring(input.indexOf("deadline") + 9, input.indexOf("/") - 1);
+                    String by = input.substring(input.indexOf("by") + 3);
+                    tasks[numOfTasks] = new Deadline(taskName, by);
+                } else if (input.contains("event")) {
+                    String taskName = input.substring(input.indexOf("event") + 6, input.indexOf("/") - 1);
+                    String at = input.substring(input.indexOf("at") + 3);
+                    tasks[numOfTasks] = new Event(taskName, at);
+                } else {
+                    System.out.println("Invalid  input!");
+                    break;
+                }
+                System.out.println(line);
+                System.out.println("Got it. I've added this task:");
+                System.out.println("  " + tasks[numOfTasks]);
+                System.out.println("Now you have " + (numOfTasks+1) +"tasks in the list.");
+                System.out.println(line);
                 numOfTasks++;
-                System.out.println(line + "\ntask added: " + input + "\n" + line);
             }
 
         }
@@ -65,7 +84,7 @@ public class Duke {
 
     public static void main(String[] args) {
         greet();
-        level3();
+        level4();
     }
 }
 
