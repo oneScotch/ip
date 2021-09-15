@@ -101,6 +101,7 @@ public class DoTask {
             throw new OutOfRangeException();
         } else {
             System.out.println(line);
+
             System.out.println("Noted. I've removed this task: \n" +
                     tasks.get(index - 1));
             tasks.remove(index - 1);
