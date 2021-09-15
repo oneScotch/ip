@@ -37,7 +37,8 @@ public class DoTask {
         } else {
             tasks[index - 1].markAsDone();
             System.out.println(line);
-            System.out.println("Nice! I've marked this task as done:\n[" + tasks[index - 1].getType() + "][X] " + tasks[index - 1].getDescription());
+            System.out.println("Nice! I've marked this task as done:\n[" +
+                    tasks[index - 1].getType() + "][X] " + tasks[index - 1].getDescription());
             System.out.println(line);
         }
     }
