@@ -21,6 +21,8 @@ public abstract class Task {
         return description;
     }
 
+    public abstract String store();
+
     public String toString() {
         return "[" + getStatusIcon() + "] " + getDescription();
     }

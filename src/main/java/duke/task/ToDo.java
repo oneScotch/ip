@@ -14,4 +14,8 @@ public class ToDo extends Task {
         return "[T]" + super.toString() ;
     }
 
+    @Override
+    public String store() {return "T | " +(isDone ? 1 : 0) +" | "+
+            super.getDescription();}
+
 }

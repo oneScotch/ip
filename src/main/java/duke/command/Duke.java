@@ -1,6 +1,5 @@
 package duke.command;
 
-import duke.command.DoTask;
 import duke.exception.EmptyTaskException;
 import duke.exception.InvalidInputException;
 import duke.exception.MissingParaException;
@@ -13,7 +12,7 @@ public class Duke {
     public static String line = "____________________________________________________________";
     private static DoTask doTask = new DoTask();
 
-    public static void greet() {
+    private static void greet() {
         String logo = " ____              ________  \n"
                 + "|  _ \\  | |   | |  |__  __| \n"
                 + "| |_| | | |   | |    |  |\n"
@@ -26,13 +25,16 @@ public class Duke {
         System.out.println(line + "\nHello! I'm Rui\nWhat can I do for you?\n" + line);
     }
 
-    public static void exit() {
+    private static void exit() {
         System.out.println("Bye. Hope to see you again soon!\n" + line);
+        System.exit(0);
     }
 
-    public static String translate(String input) throws InvalidInputException {
+    private static String translate(String input) throws InvalidInputException {
         if (input.contains("done")) {
             return "DONE";
+        } else if (input.contains("delete")) {
+            return "DELETE";
         } else if (input.contains("bye")) {
             return "EXIT";
         } else if (input.contains("list")) {
@@ -74,10 +76,13 @@ public class Duke {
     }
 
 
-    public static void main(String[] args) {
+    @SuppressWarnings("InfiniteLoopStatement")
+    public static void main(String[] args) {;
         try{
             greet();
             Scanner sc = new Scanner(System.in);
+
+            doTask.loadFile();
 
             while (true) {
                 String input = sc.nextLine();
@@ -91,6 +96,9 @@ public class Duke {
                     break;
                 case "LIST":
                     doTask.printList();
+                    break;
+                case "DELETE":
+                    doTask.delete(input);
                     break;
                 default:
                     doTask.addTask(input, request);
