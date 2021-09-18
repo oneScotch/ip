@@ -37,6 +37,12 @@ public class TaskList {
         return this.tasks.remove(taskId - 1);
     }
 
+    public TaskList search(String keyword) {
+        List<Task> filteredList = tasks.stream()
+                .filter((task) -> task.containsKeyword(keyword))
+                        .collect(Collectors.toList());
+        return new TaskList(filteredList);
+    }
 
     public int size() {
         return this.tasks.size();
