@@ -1,12 +1,23 @@
 package duke.data.task;
 
+import duke.data.exception.InvalidDateInputException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+
 public class Event extends Task {
 
-    protected String at;
+    protected LocalDate at;
 
-    public Event(String description, String at) {
+    public Event(String description, String at) throws InvalidDateInputException {
         super(description);
-        this.at = at;
+        try {
+            this.at = LocalDate.parse(at);
+        } catch (DateTimeParseException e) {
+            throw new InvalidDateInputException(at);
+        }
     }
 
 
@@ -16,11 +27,11 @@ public class Event extends Task {
     }
 
     public String toString() {
-        return "[E]" + super.toString() + " (at: " + at + ")";
+        return "[E]" + super.toString() + " (at: " + at.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
     }
 
     public String store() {
         return "E | " + (isDone ? 1 : 0) + " | " +
-                super.getDescription() + " | " + at;
+                super.getDescription() + " | " + at.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
     }
 }
