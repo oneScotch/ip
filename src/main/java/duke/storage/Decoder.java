@@ -11,7 +11,7 @@ import duke.data.exception.EmptyTaskException;
 
 public class Decoder {
     /**
-     * Decodes information in a stored string into task.
+     * Decodes information in a stored string into task to load them at the beginning of the program.
      *
      * @return task
      */
