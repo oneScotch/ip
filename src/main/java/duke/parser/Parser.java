@@ -12,7 +12,9 @@ public class Parser {
     public static String getType(String fullCommand) throws InvalidInputException {
         if (fullCommand.contains("done")) {
             return "DONE";
-        } else if (fullCommand.contains("help")) {
+        } else if (fullCommand.contains("find")) {
+            return "FIND";
+        }else if (fullCommand.contains("help")) {
             return "HELP";
         } else if (fullCommand.contains("delete")) {
             return "DELETE";
@@ -49,6 +51,8 @@ public class Parser {
             return getExitCommand();
         case "LIST":
             return getListCommand();
+        case "FIND":
+            return getFindCommand(commandParts);
         case "DONE":
             return getDoneCommand(commandParts);
         case "DELETE":
@@ -70,6 +74,12 @@ public class Parser {
 
     private static ListCommand getListCommand() {
         return new ListCommand();
+    }
+    private static FindCommand getFindCommand(String[] commandParts) throws MissingParaException {
+        if (commandParts.length < 2) {
+            throw new MissingParaException("in Find Task");
+        }
+        return new FindCommand(commandParts[1].trim());
     }
 
     private static DoneCommand getDoneCommand(String[] commandParts)

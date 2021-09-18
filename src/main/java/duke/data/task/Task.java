@@ -13,6 +13,7 @@ public abstract class Task {
         isDone = true;
     }
     public abstract String getType();
+    public abstract String store();
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
     }
@@ -21,7 +22,9 @@ public abstract class Task {
         return description;
     }
 
-    public abstract String store();
+    public boolean containsKeyword(String keyword) {
+        return description.toLowerCase().contains(keyword.toLowerCase());
+    }
 
     public String toString() {
         return "[" + getStatusIcon() + "] " + getDescription();
