@@ -1,5 +1,7 @@
 package duke.storage;
 
+import duke.data.exception.DukeException;
+import duke.data.exception.InvalidDateInputException;
 import duke.data.task.Deadline;
 import duke.data.task.Event;
 import duke.data.task.Task;
@@ -13,7 +15,7 @@ public class Decoder {
      *
      * @return task
      */
-    public static Task decoder(String s) throws EmptyTaskException {
+    public static Task decoder(String s) throws DukeException {
         String[] taskSplit = s.split(" \\| ");
         if (taskSplit.length < 2) {
             throw new EmptyTaskException();
@@ -39,6 +41,7 @@ public class Decoder {
             savedTask.markAsDone();
         }
         return savedTask;
+
     }
 }
 
