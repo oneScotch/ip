@@ -49,6 +49,10 @@ public class Ui {
     }
 
 
+    /**
+     * Print a line as divider
+     *
+     */
     public void showLine() {
         System.out.println(DIVIDER);
 
@@ -68,6 +72,10 @@ public class Ui {
         showToUser( Messages.MESSAGE_GOODBYE);
     }
 
+    /**
+     * Print uncertain number of strings
+     *
+     */
     private void showToUser(String... message) {
         for (String m : message) {
             out.println(m.replace("\n", System.lineSeparator()));
@@ -79,6 +87,10 @@ public class Ui {
         System.exit(0);
     }
 
+    /**
+     * Deal with all kinds of error
+     *
+     */
     public void showLoadingError() {
         showToUser(Messages.MESSAGE_LOADING_ERROR, DIVIDER);
 

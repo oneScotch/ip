@@ -18,6 +18,11 @@ public class Storage {
     public Storage(String filePath) {
         this.fileNamePath = filePath;
     }
+    /**
+     * load the previous tasks into an arraylist when using the program
+     *
+     * @return An arraylist that corresponds to the data stored
+     */
     public ArrayList<Task> load() throws DukeException {
         final ArrayList<Task> recordedtasks = new ArrayList<>();
         try {
@@ -35,6 +40,11 @@ public class Storage {
         return recordedtasks;
     }
 
+    /**
+     * Update the stored data whenever there is a changing
+     *
+     * @param tasks The list of tasks known
+     */
     public void changeToFile(TaskList tasks) {
         try {
             File f = new File(fileNamePath);

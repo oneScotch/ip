@@ -9,6 +9,13 @@ import duke.data.task.Deadline;
 
 public class Parser {
 
+    /**
+     * Determine the command type of the command given by the user
+     *
+     * @param fullCommand  The input by the user
+     * @return a string that represents the command type
+     * @throws InvalidInputException if the command does not belong to any knowing type
+     */
     public static String getType(String fullCommand) throws InvalidInputException {
         if (fullCommand.contains("done")) {
             return "DONE";

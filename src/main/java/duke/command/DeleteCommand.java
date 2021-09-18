@@ -14,6 +14,13 @@ public class DeleteCommand extends Command {
         this.Index = Index;
     }
 
+    /**
+     * Delete a task from the tasklist using index
+     *
+     * @param tasks   The list of tasks known
+     * @param storage The storage that is used
+     * @param ui The ui that is used
+     */
     public void execute(TaskList tasks, Ui ui, Storage storage) throws OutOfRangeException {
         if (Index > tasks.size()) {
             throw new OutOfRangeException("in Delete task");

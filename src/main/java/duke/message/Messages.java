@@ -1,6 +1,12 @@
 package duke.message;
 
+import duke.data.exception.DukeException;
+
 public class Messages {
+    /**
+     * Store all the messages used in this program
+     *
+     */
     private static final String logo = " ____              ________  \n"
             + "|  _ \\  | |   | |  |__  __| \n"
             + "| |_| | | |   | |    |  |\n"
