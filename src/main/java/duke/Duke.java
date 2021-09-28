@@ -1,12 +1,11 @@
-package duke.command;
+package duke;
 
+import duke.command.Command;
 import duke.data.exception.*;
 import duke.data.task.TaskList;
 import duke.parser.Parser;
 import duke.storage.Storage;
 import duke.ui.Ui;
-
-import java.util.Scanner;
 
 public class Duke {
 
