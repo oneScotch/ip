@@ -11,11 +11,13 @@ public class ToDo extends Task {
     }
 
     public String toString() {
-        return "[T]" + super.toString() ;
+        return "[T]" + super.toString();
     }
 
     @Override
-    public String store() {return "T | " +(isDone ? 1 : 0) +" | "+
-            super.getDescription();}
+    public String store() {
+        int statusStored = isDone ? 1 : 0;
+        return "T | " + statusStored + " | " + super.getDescription();
+    }
 
 }

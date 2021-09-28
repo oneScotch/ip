@@ -6,7 +6,7 @@ public class OutOfRangeException extends DukeException {
     }
 
     public OutOfRangeException(String message) {
-        super("The index is out of range"+ message);
+        super("The index is out of range" + message);
     }
 }
 

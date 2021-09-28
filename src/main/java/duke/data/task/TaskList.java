@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
 public class TaskList {
 
     private final List<Task> tasks;
@@ -20,6 +21,7 @@ public class TaskList {
     public TaskList(List<Task> tasks) {
         this.tasks = tasks;
     }
+
     /**
      * Fetch the task at index taskId
      *
@@ -40,18 +42,28 @@ public class TaskList {
     public TaskList search(String keyword) {
         List<Task> filteredList = tasks.stream()
                 .filter((task) -> task.containsKeyword(keyword))
-                        .collect(Collectors.toList());
+                .collect(Collectors.toList());
         return new TaskList(filteredList);
     }
 
     public int size() {
         return this.tasks.size();
     }
+
+    public boolean isEmpty() {
+        if(this.tasks.size() == 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
-        return IntStream.range(0, tasks.size())
-                .mapToObj(i -> String.format("%d. %s", i + 1, tasks.get(i)))
-                .collect(Collectors.joining("\n")).trim();
+        return IntStream.range(0, tasks.size())    // form an ordered intstream with size equals to task lists
+                .mapToObj(i -> String.format("%d. %s", i + 1, tasks.get(i)))   /*format all the elements in task lists
+                                                                                with form "index, task description" */
+                .collect(Collectors.joining("\n")).trim();  //join all the tasks and ignore the spaces
     }
 
 }

@@ -8,10 +8,10 @@ import duke.storage.Storage;
 import duke.ui.Ui;
 
 public class DeleteCommand extends Command {
-    private final int Index;
+    private final int index;
 
     public DeleteCommand(int Index) {
-        this.Index = Index;
+        this.index = Index;
     }
 
     /**
@@ -19,15 +19,15 @@ public class DeleteCommand extends Command {
      *
      * @param tasks   The list of tasks known
      * @param storage The storage that is used
-     * @param ui The ui that is used
+     * @param ui      The ui that is used
      */
     public void execute(TaskList tasks, Ui ui, Storage storage) throws OutOfRangeException {
-        if (Index > tasks.size()) {
+        if (index > tasks.size()) {
             throw new OutOfRangeException("in Delete task");
         } else {
-            Task task = tasks.deleteTask(Index);
-            System.out.printf((Messages.MESSAGE_DELETE)+ "%n",task);
-            System.out.printf((Messages.MESSAGE_COUNT)+ "%n", tasks.size());
+            Task task = tasks.deleteTask(index);
+            System.out.printf((Messages.MESSAGE_DELETE) + "%n", task);
+            System.out.printf((Messages.MESSAGE_COUNT) + "%n", tasks.size());
             storage.changeToFile(tasks);
         }
     }

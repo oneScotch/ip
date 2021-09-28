@@ -11,15 +11,13 @@ import duke.message.Messages;
 public class Ui {
     private static final String DIVIDER = "____________________________________________________________";
     private final Scanner in;
-    private final PrintStream out;
 
     public Ui() {
-        this(System.in, System.out);
+        this(System.in);
     }
 
-    public Ui(InputStream in, PrintStream out) {
+    public Ui(InputStream in) {
         this.in = new Scanner(in);
-        this.out = out;
     }
 
     /**
@@ -51,7 +49,6 @@ public class Ui {
 
     /**
      * Print a line as divider
-     *
      */
     public void showLine() {
         System.out.println(DIVIDER);
@@ -69,16 +66,16 @@ public class Ui {
     }
 
     public void showGoodbyeMessage() {
-        showToUser( Messages.MESSAGE_GOODBYE);
+        showToUser(Messages.MESSAGE_GOODBYE);
     }
 
     /**
      * Print uncertain number of strings
-     *
      */
     private void showToUser(String... message) {
         for (String m : message) {
-            out.println(m.replace("\n", System.lineSeparator()));
+            String formatted = m.replace("\n", System.lineSeparator());
+            System.out.println(formatted);
         }
     }
 
@@ -89,7 +86,6 @@ public class Ui {
 
     /**
      * Deal with all kinds of error
-     *
      */
     public void showLoadingError() {
         showToUser(Messages.MESSAGE_LOADING_ERROR, DIVIDER);

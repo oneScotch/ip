@@ -1,6 +1,6 @@
 package duke.data.exception;
 
-public class InvalidDateInputException extends DukeException{
+public class InvalidDateInputException extends DukeException {
     public InvalidDateInputException() {
         super("I'm sorry, but I don't understand the time format");
     }

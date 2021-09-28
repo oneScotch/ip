@@ -23,15 +23,15 @@ public class FindCommand extends Command {
      *
      * @param tasks   The list of tasks known
      * @param storage The storage that is used
-     * @param ui The ui that is used
+     * @param ui      The ui that is used
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage)  {
-        TaskList machingTasks = tasks.search(this.keyword);
-        if (machingTasks.size() == 0) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
+        TaskList matchingTasks = tasks.search(this.keyword);
+        if (matchingTasks.isEmpty()) {
             System.out.println("No matching tasks.");
         } else {
-            System.out.printf((Messages.MESSAGE_FIND) + "%n",machingTasks);
+            System.out.printf((Messages.MESSAGE_FIND) + "%n", matchingTasks);
         }
     }
 }

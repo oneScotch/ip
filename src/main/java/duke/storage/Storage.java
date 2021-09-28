@@ -18,6 +18,7 @@ public class Storage {
     public Storage(String filePath) {
         this.fileNamePath = filePath;
     }
+
     /**
      * load the previous tasks into an arraylist when using the program
      *
@@ -27,7 +28,7 @@ public class Storage {
         final ArrayList<Task> recordedtasks = new ArrayList<>();
         try {
             File f = new File(fileNamePath);
-            if(!f.isFile()){
+            if (!f.isFile()) {
                 throw new FileNotFoundException();
             }
             Scanner s = new Scanner(f);
@@ -66,16 +67,10 @@ public class Storage {
 
             FileWriter fw = new FileWriter(f);
             for (int i = 0; i < tasks.size(); i++) {
-                fw.write(tasks.getTask(i+1).store());
+                fw.write(tasks.getTask(i + 1).store());
                 fw.write("\r\n");
             }
             fw.close();
-            /*Iterator<Task> iter = tasks.iterator();
-            while (iter.hasNext()) {
-                System.out.println(iter.next());
-                fw.write(iter.next().store());
-                System.out.println("hhh");
-            }*/
         } catch (IOException e) {
             System.out.println("Something went wrong when storing local file");
         }

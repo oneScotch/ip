@@ -3,6 +3,7 @@ package duke.data.task;
 public abstract class Task {
     protected String description;
     protected boolean isDone;
+    protected final String doneSign = "X";
 
     public Task(String description) {
         this.description = description;
@@ -15,7 +16,7 @@ public abstract class Task {
     public abstract String getType();
     public abstract String store();
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done task with X
+        return (isDone ? doneSign : " "); // mark done task with X
     }
 
     public String getDescription() {

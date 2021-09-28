@@ -27,11 +27,14 @@ public class Event extends Task {
     }
 
     public String toString() {
-        return "[E]" + super.toString() + " (at: " + at.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
+        String timeFormatted = at.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+        return "[E]" + super.toString() + " (at: " + timeFormatted + ")";
     }
 
     public String store() {
-        return "E | " + (isDone ? 1 : 0) + " | " +
-                super.getDescription() + " | " + at.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+        int statusStored = isDone ? 1 : 0;
+        String timeFormatted = at.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+        return "E | " + statusStored + " | " +
+                super.getDescription() + " | " + timeFormatted;
     }
 }

@@ -11,14 +11,14 @@ public class ListCommand extends Command {
      *
      * @param tasks   The list of tasks known
      * @param storage The storage that is used
-     * @param ui The ui that is used
+     * @param ui      The ui that is used
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         if (tasks.size() == 0) {
             System.out.println("No task added yet!");
         } else {
-            System.out.println(String.format(Messages.MESSAGE_LIST, tasks));
+            System.out.printf((Messages.MESSAGE_LIST) + "%n", tasks);
         }
     }
 
