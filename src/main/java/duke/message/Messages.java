@@ -30,7 +30,10 @@ public class Messages {
             + "deadline <content> /by <time>: add a deadline task\n"
             + "done <index>: mark the task at index \'index\' as done\n"
             + "delete <index>: delete the task at index \'index\'\n"
-            + "bye: close the program\n";
+            + "bye: close the program\n"
+            + "help: show the help information for users\n"
+            + "find <keyword>: fine tasks containing keyword";
+
 
     public static final String MESSAGE_LOADING_ERROR = "No previous data";
 
